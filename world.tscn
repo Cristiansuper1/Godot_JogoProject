@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq61x4p4v3wp3"]
+
+[ext_resource type="PackedScene" uid="uid://dut8rv75r4bb1" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://2h6620imtbec" path="res://ground.tscn" id="2_fj7yv"]
+
+[node name="World" type="Node2D"]
+
+[node name="Ground" parent="." instance=ExtResource("2_fj7yv")]
+position = Vector2(-149, 87)
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player" parent="Players" node_paths=PackedStringArray("oponente") instance=ExtResource("1_f3sb7")]
+oponente = NodePath("../Player2")
+
+[node name="Camera2D" type="Camera2D" parent="Players"]
+zoom = Vector2(3, 3)
+
+[node name="Player2" parent="Players" node_paths=PackedStringArray("oponente") instance=ExtResource("1_f3sb7")]
+position = Vector2(50, 1)
+player = "p2"
+oponente = NodePath("../Player")

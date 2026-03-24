@@ -1,0 +1,44 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Arquivos temporários
+*.tmp
+
+# Importações
+.import/
+*.import
+
+# Configs de export
+export.cfg
+export_presets.cfg
+
+# Traduções
+*.translation
+
+# Godot Mono (C#/dotnet)
+.mono/
+data_*/
+mono_crash.*.json
+
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
+
+
+# VSCode
+.vscode/
+
+# Rider / IntelliJ
+.idea/
+*.sln.iml
+
+# Logs em geral
+*.log
