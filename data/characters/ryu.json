@@ -1,0 +1,56 @@
+{
+  "light_punch": {
+    "name": "light_punch",
+    "damage": 3,
+    "knockback_strenght": 3,
+    "hit_stun": 3,
+    "startup": 3,
+    "active": 3,
+    "recovery": 3
+  },
+  "medium_punch": {
+    "name": "medium_punch",
+    "damage": 10,
+    "knockback_strenght": 7,
+    "hit_stun": 10,
+    "startup": 5,
+    "active": 3,
+    "recovery": 8
+  },
+  "heavy_punch": {
+    "name": "heavy_punch",
+    "damage": 16,
+    "knockback_strenght": 12,
+    "hit_stun": 15,
+    "startup": 9,
+    "active": 5,
+    "recovery": 16
+  },
+  "light_kick": {
+    "name": "light_kick",
+    "damage": 4,
+    "knockback_strenght": 3,
+    "hit_stun": 4,
+    "startup": 4,
+    "active": 3,
+    "recovery": 5
+  },
+  "medium_kick": {
+    "name": "medium_kick",
+    "damage": 15,
+    "knockback_strenght": 10,
+    "hit_stun": 15,
+    "startup": 8,
+    "active": 4,
+    "recovery": 12
+  },
+  "heavy_kick": {
+    "name": "heavy_kick",
+    "damage": 26,
+    "knockback_strenght": 17,
+    "hit_stun": 20,
+    "startup": 16,
+    "active": 6,
+    "recovery": 20
+  }
+}

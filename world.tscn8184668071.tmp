@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq61x4p4v3wp3"]
+
+[ext_resource type="PackedScene" uid="uid://dut8rv75r4bb1" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://2h6620imtbec" path="res://ground.tscn" id="2_fj7yv"]
+[ext_resource type="Script" uid="uid://dvtc07jdsm5io" path="res://dummy.gd" id="3_tlwt5"]
+
+[node name="World" type="Node2D"]
+
+[node name="Ground" parent="." instance=ExtResource("2_fj7yv")]
+position = Vector2(-149, 87)
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("1_f3sb7")]
+position = Vector2(0, -73)
+
+[node name="Camera2D" type="Camera2D" parent="Players"]
+zoom = Vector2(2.5, 2.5)
+
+[node name="Player2" parent="Players" instance=ExtResource("1_f3sb7")]
+position = Vector2(50, -72)
+script = ExtResource("3_tlwt5")

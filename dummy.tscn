@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt1u3yrsekrx6"]
+
+[ext_resource type="Script" uid="uid://dvtc07jdsm5io" path="res://dummy.gd" id="1_gtj52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcxmu"]
+size = Vector2(89, 200)
+
+[node name="Node2D" type="CharacterBody2D"]
+visibility_layer = 2
+script = ExtResource("1_gtj52")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(34.5, 90)
+shape = SubResource("RectangleShape2D_gcxmu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
