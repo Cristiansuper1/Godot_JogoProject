@@ -1,27 +1,30 @@
 extends State
 
-var total_time = 0
-var atk_time_stamp = 0
+var current_frame: int = 0
+var total_frames: int = 0
 
 func enter():
-	total_time = player.cur_atk.startup + player.cur_atk.active + player.cur_atk.recovery
-	atk_time_stamp = get_parent().get_step()
-	anim.play(player.cur_atk.name)
+	current_frame = 0
+	total_frames = player.cur_atk.startup_frames + player.cur_atk.active_frames + player.cur_atk.recovery_frames
+	
+	player.setup_hitbox()
+	player.set_hitbox_active(false)
+	
+	anim.play(player.cur_atk.anim_name)
 
 func exit():
-	pass
+	player.set_hitbox_active(false)
+	current_frame = 0
 
 func update(_delta: float):
-	var now = get_parent().get_step()
-	var atk_timer = now - atk_time_stamp
-	if atk_timer < player.cur_atk.startup:
-		player.atk_ativo(true)
-	elif atk_timer <= player.cur_atk.startup + player.cur_atk.active:
-		player.atk_ativo(false)
+	current_frame += 1
+	
+	if current_frame <= player.cur_atk.startup_frames:
+		player.set_hitbox_active(false)
+	elif current_frame <= player.cur_atk.startup_frames + player.cur_atk.active_frames:
+		player.set_hitbox_active(true)
 	else:
-		player.atk_ativo(true)
+		player.set_hitbox_active(false)
 	
-	if atk_timer > total_time:
+	if current_frame >= total_frames:
 		get_parent().send_event("ATTACK_END")
-	pass
-	

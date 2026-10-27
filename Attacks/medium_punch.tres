@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3 uid="uid://c2wlrxvqx4mg"]
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://c2wlrxvqx4mg"]
 
 [ext_resource type="Script" uid="uid://0k0fdygxww4s" path="res://Attacks/AttackData.gd" id="1_w4lw3"]
 
 [resource]
 script = ExtResource("1_w4lw3")
+anim_name = "medium_punch"
 damage = 10
-knockback_strenght = 30.0
-hit_stun = 10.0
-startup = 5
-active = 3
-recovery = 8
-name = "medium_punch4"
+startup_frames = 5
+active_frames = 3
+recovery_frames = 8
+hitstun_frames = 18
+blockstun_frames = 14
+hitbox_position = Vector2(34, -18)
+hitbox_size = Vector2(30, 12)
 metadata/_custom_type_script = "uid://0k0fdygxww4s"

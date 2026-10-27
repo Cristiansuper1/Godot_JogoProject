@@ -1,28 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq61x4p4v3wp3"]
+[gd_scene format=3 uid="uid://dq61x4p4v3wp3"]
 
 [ext_resource type="PackedScene" uid="uid://2h6620imtbec" path="res://scenes/ground.tscn" id="1_4wyf3"]
 [ext_resource type="Script" uid="uid://d2kg12eecdbmx" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dut8rv75r4bb1" path="res://scenes/player.tscn" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dt1u3yrsekrx6" path="res://scenes/dummy.tscn" id="3_71j4m"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=1293097618]
 script = ExtResource("1_k0juu")
 
-[node name="Ground" parent="." instance=ExtResource("1_4wyf3")]
+[node name="Ground" parent="." unique_id=1270602297 instance=ExtResource("1_4wyf3")]
 position = Vector2(-149, 87)
 
-[node name="Players" type="Node" parent="."]
+[node name="Players" type="Node" parent="." unique_id=1374982312]
 
-[node name="Player" parent="Players" node_paths=PackedStringArray("enemy") instance=ExtResource("2_k0juu")]
+[node name="Player" parent="Players" unique_id=2119350948 node_paths=PackedStringArray("enemy") instance=ExtResource("2_k0juu")]
 position = Vector2(-73, 32)
 enemy = NodePath("../Player2")
 
-[node name="Player2" parent="Players" node_paths=PackedStringArray("enemy") instance=ExtResource("2_k0juu")]
+[node name="Player2" parent="Players" unique_id=54956263 node_paths=PackedStringArray("enemy") instance=ExtResource("2_k0juu")]
 position = Vector2(27, 32)
+input_prefix = "p2_"
 enemy = NodePath("../Player")
 
-[node name="Camera2D" type="Camera2D" parent="Players"]
+[node name="Camera2D" type="Camera2D" parent="Players" unique_id=2095513998]
 zoom = Vector2(2.5, 2.5)
 
-[node name="Node2D" parent="Players" instance=ExtResource("3_71j4m")]
+[node name="Node2D" parent="Players" unique_id=383703282 instance=ExtResource("3_71j4m")]
 position = Vector2(86, -91)

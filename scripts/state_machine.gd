@@ -36,7 +36,7 @@ var transitions = {
 	},
 	"AIRBORNE_ATTACK" : {
 		"LAND": "IDLE",
-		"ATTACK_END": "AIRBORNE_RECOVERY"
+		"ATTACK_END": "AIRBORNE"
 	},
 	"AIRBORNE_RECOVERY" : {
 		"LAND": "IDLE",

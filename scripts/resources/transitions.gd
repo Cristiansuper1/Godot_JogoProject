@@ -22,7 +22,10 @@ extends Resource
 	},
 	"AIRBORNE" : {
 		"LAND": "IDLE",
-		"ATTACK": "ATTACK",
+		"ATTACK": "AIRBORNE_ATTACK",
 	},
-	"ATTACK": {}
+	"AIRBORNE_ATTACK": {
+		"LAND": "IDLE",
+		"ATTACK_END": "AIRBONE"
+	}
 }
