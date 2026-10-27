@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt1u3yrsekrx6"]
+
+[ext_resource type="Script" uid="uid://dvtc07jdsm5io" path="res://scripts/dummy.gd" id="1_gtj52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcxmu"]
+size = Vector2(89, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5h11f"]
+size = Vector2(79, 201)
+
+[node name="Dummy" type="CharacterBody2D"]
+visibility_layer = 2
+script = ExtResource("1_gtj52")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(34.5, 90)
+shape = SubResource("RectangleShape2D_gcxmu")
+debug_color = Color(0, 0.6236406, 0.25184, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(34.5, 90.5)
+shape = SubResource("RectangleShape2D_5h11f")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+
+*.tmp
+*.pixil
+codebase_llm.md
+codebase_to_llm.py
