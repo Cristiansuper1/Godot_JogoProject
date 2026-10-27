@@ -29,5 +29,5 @@ func atk_ativo(active: bool):
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.owner != self.owner:
-		print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI!")
+		print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI!")
 		take_damage.emit("HURT")
