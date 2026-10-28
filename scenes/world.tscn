@@ -5,11 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://dut8rv75r4bb1" path="res://scenes/player.tscn" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dt1u3yrsekrx6" path="res://scenes/dummy.tscn" id="3_71j4m"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pn7r1"]
+size = Vector2(26, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j58t4"]
+size = Vector2(25, 269)
+
 [node name="World" type="Node2D" unique_id=1293097618]
 script = ExtResource("1_k0juu")
 
 [node name="Ground" parent="." unique_id=1270602297 instance=ExtResource("1_4wyf3")]
-position = Vector2(-149, 87)
+position = Vector2(-241, 88)
 
 [node name="Players" type="Node" parent="." unique_id=1374982312]
 
@@ -26,4 +32,18 @@ enemy = NodePath("../Player")
 zoom = Vector2(2.5, 2.5)
 
 [node name="Node2D" parent="Players" unique_id=383703282 instance=ExtResource("3_71j4m")]
-position = Vector2(86, -91)
+position = Vector2(370, -143)
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1948043897]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=407281547]
+position = Vector2(-224, 2.5)
+shape = SubResource("RectangleShape2D_pn7r1")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=803824703]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1223462192]
+position = Vector2(218.5, -0.5)
+shape = SubResource("RectangleShape2D_j58t4")

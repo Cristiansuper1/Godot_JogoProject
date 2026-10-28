@@ -673,16 +673,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwjto"]
-size = Vector2(28, 99)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0juu"]
+resource_local_to_scene = true
+radius = 14.0
+height = 95.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jxqw"]
+resource_local_to_scene = true
 size = Vector2(34.5, 97.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw050"]
+resource_local_to_scene = true
 size = Vector2(19, 9)
 
 [node name="Player" type="CharacterBody2D" unique_id=131070923]
+collision_layer = 2
+collision_mask = 3
+floor_stop_on_slope = false
 script = ExtResource("1_1jxqw")
 light_punch_atk = ExtResource("2_pf23h")
 medium_punch_atk = ExtResource("3_dt7fs")
@@ -696,7 +703,7 @@ offset = Vector2(0, -49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=381380714]
 position = Vector2(-2, 0.5)
-shape = SubResource("RectangleShape2D_bwjto")
+shape = SubResource("CapsuleShape2D_k0juu")
 
 [node name="StateMachine" type="Node" parent="." unique_id=731662756 node_paths=PackedStringArray("player", "anim")]
 script = ExtResource("16_op7ga")
@@ -731,6 +738,8 @@ script = ExtResource("23_7lmhl")
 script = ExtResource("26_ujl30")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=593916100]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=448337511]
 position = Vector2(-1.75, 0.25)
@@ -738,6 +747,8 @@ shape = SubResource("RectangleShape2D_1jxqw")
 debug_color = Color(0, 0.6413147, 0.3412084, 0.41960785)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=815354644]
+collision_layer = 4
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1058286077]
 light_mask = 2

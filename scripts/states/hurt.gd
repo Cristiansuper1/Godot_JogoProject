@@ -1,23 +1,28 @@
 extends State
 
+var current_frame: int = 0
+
 var total_time = 0
 var atk_time_stamp = 0
 var timer = 0
 
 func enter():
-	total_time = player.cur_atk.startup + player.cur_atk.active + player.cur_atk.recovery
-	atk_time_stamp = get_parent().get_step()
+	current_frame = 0
 	anim.play("hurt")
-	print("HELLO WORLD")
+
+	player.set_hitbox_active(false)
 
 func exit():
-	pass
+	current_frame = 0
 
-func update(_delta: float):
-	timer += 1
-	print(timer)
-	if timer >= player.cur_atk.knockback_strenght * 10:
-		timer = 0
+func update(delta: float):
+	current_frame += 1
+	if not player.is_on_floor():
+		player.velocity.y += player.gravity * delta
+	
+	player.velocity.x = move_toward(player.velocity.x, 0.0, player.speed * 2.0 * delta)
+	player.move_and_slide()
+	
+	if current_frame >= player.received_hitstun:
 		get_parent().send_event("HURT_END")
-	pass
 	

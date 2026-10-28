@@ -21,10 +21,12 @@ var transitions = {
 		"STOP": "IDLE",
 		"CROUCH": "CROUCH",
 		"ATTACK": "ATTACK",
+		"HURT": "HURT",
 	},
 	"CROUCH" : {
 		"JUMP": "JUMP",
 		"CROUCH_END": "IDLE",
+		"HURT": "HURT"
 	},
 	"ATTACK": {
 		"ATTACK_END": "IDLE",
@@ -40,7 +42,6 @@ var transitions = {
 	},
 	"AIRBORNE_RECOVERY" : {
 		"LAND": "IDLE",
-		"ATTACK_END": "AIRBORNE"
 	},
 	"HURT" : {
 		"HURT_END": "IDLE",

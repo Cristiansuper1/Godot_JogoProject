@@ -6,19 +6,27 @@ extends Resource
 		"MOVE": "MOVE",
 		"CROUCH": "CROUCH",
 		"ATTACK": "ATTACK",
+		"HURT": "HURT",
 	},
 	"JUMP" : {
-		"JUMP_END": "IDLE"
+		"AIRBORNE": "AIRBORNE",
+		"JUMP_END": "IDLE",
 	},
 	"MOVE" : {
 		"JUMP": "JUMP",
 		"STOP": "IDLE",
 		"CROUCH": "CROUCH",
 		"ATTACK": "ATTACK",
+		"HURT": "HURT",
 	},
 	"CROUCH" : {
 		"JUMP": "JUMP",
 		"CROUCH_END": "IDLE",
+		"HURT": "HURT",
+	},
+	"ATTACK": {
+		"ATTACK_END": "IDLE",
+		"HURT": "HURT",
 	},
 	"AIRBORNE" : {
 		"LAND": "IDLE",
@@ -26,6 +34,12 @@ extends Resource
 	},
 	"AIRBORNE_ATTACK": {
 		"LAND": "IDLE",
-		"ATTACK_END": "AIRBONE"
+		"ATTACK_END": "AIRBONE_RECOVERY"
+	},
+	"AIRBORNE_RECOVERY": {
+		"LAND": "IDLE",
+	},
+	"HURT": {
+		"HURT_END": "IDLE",
 	}
 }

@@ -2,9 +2,10 @@ extends State
 
 func enter():
 	anim.play("crouch")
+	player.set_crouch_boxes(true)
 
 func exit():
-	pass
+	player.set_crouch_boxes(false)
 
 func update(_delta: float):
 	player.check_auto_turn()
