@@ -4,54 +4,60 @@ extends Node
 @export var anim : AnimatedSprite2D
 
 var transitions = {
-	"IDLE" : {
+	"IDLE": {
 		"AIRBORNE": "AIRBORNE",
 		"JUMP": "JUMP",
 		"MOVE": "MOVE",
 		"CROUCH": "CROUCH",
 		"ATTACK": "ATTACK",
 		"HURT": "HURT",
+		"BLOCK": "BLOCK",
 	},
-	"JUMP" : {
+	"JUMP": {
 		"AIRBORNE": "AIRBORNE",
-		"JUMP_END": "IDLE"
+		"JUMP_END": "IDLE",
 	},
-	"MOVE" : {
+	"MOVE": {
 		"JUMP": "JUMP",
 		"STOP": "IDLE",
 		"CROUCH": "CROUCH",
 		"ATTACK": "ATTACK",
 		"HURT": "HURT",
+		"BLOCK": "BLOCK",
 	},
-	"CROUCH" : {
+	"CROUCH": {
 		"JUMP": "JUMP",
 		"CROUCH_END": "IDLE",
-		"HURT": "HURT"
+		"HURT": "HURT",
+		"BLOCK": "BLOCK",
 	},
 	"ATTACK": {
 		"ATTACK_END": "IDLE",
-		"HURT": "HURT"
+		"ATTACK_END_CROUCH": "CROUCH",
+		"HURT": "HURT",
 	},
-	"AIRBORNE" : {
+	"AIRBORNE": {
 		"LAND": "IDLE",
 		"ATTACK": "AIRBORNE_ATTACK",
 	},
-	"AIRBORNE_ATTACK" : {
+	"AIRBORNE_ATTACK": {
 		"LAND": "IDLE",
-		"ATTACK_END": "AIRBORNE"
+		"ATTACK_END": "AIRBORNE_RECOVERY",
 	},
-	"AIRBORNE_RECOVERY" : {
+	"AIRBORNE_RECOVERY": {
 		"LAND": "IDLE",
 	},
-	"HURT" : {
+	"HURT": {
 		"HURT_END": "IDLE",
+	},
+	"BLOCK": {
+		"BLOCK_END": "IDLE",
+		"BLOCK_END_CROUCH": "CROUCH",
+		"HURT": "HURT",
 	}
 }
 
 @onready var cur_step = 0
-
-@export var rurtibocs : CharacterBody2D
-
 var cur_state = State
 
 func _ready() -> void:
@@ -65,13 +71,10 @@ func _ready() -> void:
 
 func send_event(event_name : String):
 	var name_ev = cur_state.name.to_upper()
-	
 	if transitions.has(name_ev):
 		var allowed_events = transitions[name_ev]
-		
-		if  allowed_events.has(event_name):
+		if allowed_events.has(event_name):
 			var next_state_name = allowed_events[event_name]
-			
 			cur_state.exit()
 			cur_state = get_node(next_state_name)
 			cur_state.enter()

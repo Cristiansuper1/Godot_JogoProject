@@ -11,4 +11,4 @@ class_name AttackData
 @export var knockback: Vector2
 @export var hitbox_position: Vector2
 @export var hitbox_size: Vector2
-@export_enum("HIGH", "LOW", "MID") var attack_height: String = "HIGH"
+@export_enum("HIGH", "LOW", "MID") var attack_height: String = "MID"

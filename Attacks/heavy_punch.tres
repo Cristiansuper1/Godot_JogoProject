@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://vp0nqnot4g1w"]
+
+[ext_resource type="Script" uid="uid://0k0fdygxww4s" path="res://Attacks/AttackData.gd" id="1_td6iy"]
+
+[resource]
+script = ExtResource("1_td6iy")
+anim_name = "heavy_punch"
+damage = 3
+startup_frames = 3
+active_frames = 3
+recovery_frames = 3
+hitstun_frames = 12
+blockstun_frames = 9
+knockback = Vector2(40, 0)
+hitbox_position = Vector2(28, -18)
+hitbox_size = Vector2(20, 10)
+metadata/_custom_type_script = "uid://0k0fdygxww4s"

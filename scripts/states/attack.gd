@@ -27,4 +27,8 @@ func update(_delta: float):
 		player.set_hitbox_active(false)
 	
 	if current_frame >= total_frames:
-		get_parent().send_event("ATTACK_END")
+		var prefix = player.input_prefix
+		if Input.is_action_pressed(prefix + "down"):
+			get_parent().send_event("ATTACK_END_CROUCH")
+		else:
+			get_parent().send_event("ATTACK_END")

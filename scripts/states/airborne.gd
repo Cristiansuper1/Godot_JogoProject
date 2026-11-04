@@ -12,16 +12,8 @@ func update(delta: float):
 		return
 
 	player.velocity.y += player.gravity * delta
-	var prefix = player.input_prefix
 
-	if Input.is_action_just_pressed(prefix + "lp"):
-		player.cur_atk = player.light_punch_atk
-		get_parent().send_event("ATTACK")
-	elif Input.is_action_just_pressed(prefix + "mp"):
-		player.cur_atk = player.medium_punch_atk
-		get_parent().send_event("ATTACK")
-	elif Input.is_action_just_pressed(prefix + "lk"):
-		player.cur_atk = player.light_kick_atk
-		get_parent().send_event("ATTACK")
+	if player.check_attack_inputs():
+		return
 
 	player.move_and_slide()

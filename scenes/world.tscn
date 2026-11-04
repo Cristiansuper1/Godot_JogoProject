@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://d2kg12eecdbmx" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dut8rv75r4bb1" path="res://scenes/player.tscn" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dt1u3yrsekrx6" path="res://scenes/dummy.tscn" id="3_71j4m"]
+[ext_resource type="Resource" uid="uid://vp0nqnot4g1w" path="res://Attacks/heavy_punch.tres" id="4_qfnet"]
+[ext_resource type="Resource" uid="uid://7n7hm4osrt71" path="res://Attacks/medium_kick.tres" id="5_i7141"]
+[ext_resource type="Resource" uid="uid://bedxwiytopq1u" path="res://Attacks/heavy_kick.tres" id="6_i7141"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pn7r1"]
 size = Vector2(26, 273)
@@ -21,11 +24,17 @@ position = Vector2(-241, 88)
 
 [node name="Player" parent="Players" unique_id=2119350948 node_paths=PackedStringArray("enemy") instance=ExtResource("2_k0juu")]
 position = Vector2(-73, 32)
+heavy_punch_atk = ExtResource("4_qfnet")
+medium_kick_atk = ExtResource("5_i7141")
+heavy_kick_atk = ExtResource("6_i7141")
 enemy = NodePath("../Player2")
 
 [node name="Player2" parent="Players" unique_id=54956263 node_paths=PackedStringArray("enemy") instance=ExtResource("2_k0juu")]
 position = Vector2(27, 32)
 input_prefix = "p2_"
+heavy_punch_atk = ExtResource("4_qfnet")
+medium_kick_atk = ExtResource("5_i7141")
+heavy_kick_atk = ExtResource("6_i7141")
 enemy = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="Players" unique_id=2095513998]

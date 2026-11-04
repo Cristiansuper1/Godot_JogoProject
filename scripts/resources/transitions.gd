@@ -1,45 +1,53 @@
 extends Resource
 @export var transitions = {
-	"IDLE" : {
+	"IDLE": {
 		"AIRBORNE": "AIRBORNE",
 		"JUMP": "JUMP",
 		"MOVE": "MOVE",
 		"CROUCH": "CROUCH",
 		"ATTACK": "ATTACK",
 		"HURT": "HURT",
+		"BLOCK": "BLOCK",
 	},
-	"JUMP" : {
+	"JUMP": {
 		"AIRBORNE": "AIRBORNE",
 		"JUMP_END": "IDLE",
 	},
-	"MOVE" : {
+	"MOVE": {
 		"JUMP": "JUMP",
 		"STOP": "IDLE",
 		"CROUCH": "CROUCH",
 		"ATTACK": "ATTACK",
 		"HURT": "HURT",
+		"BLOCK": "BLOCK",
 	},
-	"CROUCH" : {
+	"CROUCH": {
 		"JUMP": "JUMP",
 		"CROUCH_END": "IDLE",
 		"HURT": "HURT",
+		"BLOCK": "BLOCK",
 	},
 	"ATTACK": {
 		"ATTACK_END": "IDLE",
 		"HURT": "HURT",
 	},
-	"AIRBORNE" : {
+	"AIRBORNE": {
 		"LAND": "IDLE",
 		"ATTACK": "AIRBORNE_ATTACK",
 	},
 	"AIRBORNE_ATTACK": {
 		"LAND": "IDLE",
-		"ATTACK_END": "AIRBONE_RECOVERY"
+		"ATTACK_END": "AIRBORNE_RECOVERY",
 	},
 	"AIRBORNE_RECOVERY": {
 		"LAND": "IDLE",
 	},
 	"HURT": {
 		"HURT_END": "IDLE",
+	},
+	"BLOCK": {
+		"BLOCK_END": "IDLE",
+		"BLOCK_END_CROUCH": "CROUCH",
+		"HURT": "HURT",
 	}
 }

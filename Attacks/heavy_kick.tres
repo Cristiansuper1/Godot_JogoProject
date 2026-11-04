@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://bedxwiytopq1u"]
+
+[ext_resource type="Script" uid="uid://0k0fdygxww4s" path="res://Attacks/AttackData.gd" id="1_m3fw2"]
+
+[resource]
+script = ExtResource("1_m3fw2")
+anim_name = "heavy_kick"
+damage = 3
+startup_frames = 3
+active_frames = 3
+recovery_frames = 3
+hitstun_frames = 12
+blockstun_frames = 15
+knockback = Vector2(50, 0)
+hitbox_position = Vector2(26, 15)
+hitbox_size = Vector2(28, 14)
+metadata/_custom_type_script = "uid://0k0fdygxww4s"

@@ -2,6 +2,7 @@ extends State
 
 func enter():
 	anim.play("move-front")
+	player.set_crouch_boxes(false)
 
 func exit():
 	pass
@@ -9,10 +10,18 @@ func exit():
 func update(_delta: float):
 	player.check_auto_turn()
 	
-	var prefix = player.input_prefix
-	var dir = Input.get_axis(prefix + "left", prefix + "right")
+	if not player.is_on_floor():
+		get_parent().send_event("AIRBORNE")
+		return
 	
+	var prefix = player.input_prefix
+	
+	if player.check_attack_inputs():
+		return
+	
+	var dir = Input.get_axis(prefix + "left", prefix + "right")
 	player.velocity.x = player.speed * dir
+	
 	if dir == 0:
 		get_parent().send_event("STOP")
 		return
@@ -26,19 +35,8 @@ func update(_delta: float):
 			anim.play("move-back")
 	
 	if Input.is_action_just_pressed(prefix + "up"):
-		player.velocity.x = player.speed * dir
 		get_parent().send_event("JUMP")
 	elif Input.is_action_just_pressed(prefix + "down"):
 		get_parent().send_event("CROUCH")
-	
-	if Input.is_action_just_pressed(prefix + "lp"):
-		player.cur_atk = player.light_punch_atk
-		get_parent().send_event("ATTACK")
-	elif Input.is_action_just_pressed(prefix + "mp"):
-		player.cur_atk = player.medium_punch_atk
-		get_parent().send_event("ATTACK")
-	elif Input.is_action_just_pressed(prefix + "lk"):
-		player.cur_atk = player.light_kick_atk
-		get_parent().send_event("ATTACK")
 	
 	player.move_and_slide()
