@@ -18,6 +18,9 @@ func update(_delta: float):
 	
 	if player.check_attack_inputs():
 		return
+		
+	if player.check_dash_inputs():
+		return
 	
 	var dir = Input.get_axis(prefix + "left", prefix + "right")
 	player.velocity.x = player.speed * dir
@@ -40,3 +43,6 @@ func update(_delta: float):
 		get_parent().send_event("CROUCH")
 	
 	player.move_and_slide()
+	
+
+	

@@ -12,6 +12,7 @@ var transitions = {
 		"ATTACK": "ATTACK",
 		"HURT": "HURT",
 		"BLOCK": "BLOCK",
+		"DASH": "DASH",
 	},
 	"JUMP": {
 		"AIRBORNE": "AIRBORNE",
@@ -24,6 +25,7 @@ var transitions = {
 		"ATTACK": "ATTACK",
 		"HURT": "HURT",
 		"BLOCK": "BLOCK",
+		"DASH": "DASH",
 	},
 	"CROUCH": {
 		"JUMP": "JUMP",
@@ -54,6 +56,10 @@ var transitions = {
 		"BLOCK_END": "IDLE",
 		"BLOCK_END_CROUCH": "CROUCH",
 		"HURT": "HURT",
+	},
+	"DASH": {
+			"DASH_END": "IDLE",
+			"HURT": "HURT",
 	}
 }
 

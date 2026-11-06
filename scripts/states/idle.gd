@@ -14,10 +14,13 @@ func update(_delta: float):
 		get_parent().send_event("AIRBORNE")
 		return
 	
-	var prefix = player.input_prefix
-	
 	if player.check_attack_inputs():
 		return
+	
+	if player.check_dash_inputs():
+		return
+	
+	var prefix = player.input_prefix
 	
 	if Input.is_action_pressed(prefix + "up"):
 		get_parent().send_event("JUMP")

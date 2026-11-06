@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://bgggg3ceu8obg" path="res://scripts/states/hurt.gd" id="25_ke2ow"]
 [ext_resource type="Script" uid="uid://bln8xe70a661b" path="res://scripts/states/airborne_recovery.gd" id="26_ujl30"]
 [ext_resource type="Script" uid="uid://cgevurramtd6a" path="res://scripts/states/block.gd" id="29_dt7fs"]
+[ext_resource type="Script" uid="uid://bw8q1d0c27rew" path="res://scripts/states/dash.gd" id="30_wqfne"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
 atlas = ExtResource("2_dw050")
@@ -740,6 +741,9 @@ script = ExtResource("26_ujl30")
 
 [node name="BLOCK" type="Node" parent="StateMachine" unique_id=1118056310]
 script = ExtResource("29_dt7fs")
+
+[node name="DASH" type="Node" parent="StateMachine" unique_id=441824307]
+script = ExtResource("30_wqfne")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=593916100]
 collision_layer = 8
