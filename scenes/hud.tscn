@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvyg7quq1e3r5"]
+
+[ext_resource type="Script" uid="uid://ha308xj8km0h" path="res://scripts/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.12, 0.12, 0.12, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_damage"]
+bg_color = Color(0.85, 0.15, 0.15, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_health"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health"]
+bg_color = Color(0.18, 0.8, 0.25, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_announcement"]
+font_size = 48
+font_color = Color(1, 0.85, 0.1, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=719434919]
+script = ExtResource("1_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=142514434]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2066291823]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="P1_Container" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1936198543]
+custom_minimum_size = Vector2(380, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="P1_DamageBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/P1_Container" unique_id=1945171869]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_damage")
+show_percentage = false
+
+[node name="P1_HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/P1_Container" unique_id=1765658198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_health")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+show_percentage = false
+
+[node name="TimerLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2_Container" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1046216240]
+custom_minimum_size = Vector2(380, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="P2_DamageBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/P2_Container" unique_id=1760009521]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_damage")
+fill_mode = 1
+show_percentage = false
+
+[node name="P2_HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/P2_Container" unique_id=1791413977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_health")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+fill_mode = 1
+show_percentage = false
+
+[node name="AnnouncementLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "K.O."
+label_settings = SubResource("LabelSettings_announcement")
+horizontal_alignment = 1
+vertical_alignment = 1

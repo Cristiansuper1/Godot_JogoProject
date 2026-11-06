@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_a3d7u")
-anim_name = "medium_kick"
+anim_name = "light_kick"
 damage = 3
 startup_frames = 3
 active_frames = 3

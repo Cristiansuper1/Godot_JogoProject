@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_td6iy")
-anim_name = "heavy_punch"
+anim_name = "medium_punch4"
 damage = 3
 startup_frames = 3
 active_frames = 3

@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://vp0nqnot4g1w" path="res://Attacks/heavy_punch.tres" id="4_qfnet"]
 [ext_resource type="Resource" uid="uid://7n7hm4osrt71" path="res://Attacks/medium_kick.tres" id="5_i7141"]
 [ext_resource type="Resource" uid="uid://bedxwiytopq1u" path="res://Attacks/heavy_kick.tres" id="6_i7141"]
+[ext_resource type="PackedScene" uid="uid://bvyg7quq1e3r5" path="res://scenes/hud.tscn" id="8_4mrxx"]
+[ext_resource type="Script" uid="uid://7gpv7ofivhx2" path="res://scripts/fight_camera.gd" id="9_7r4gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pn7r1"]
 size = Vector2(26, 273)
@@ -37,9 +39,6 @@ medium_kick_atk = ExtResource("5_i7141")
 heavy_kick_atk = ExtResource("6_i7141")
 enemy = NodePath("../Player")
 
-[node name="Camera2D" type="Camera2D" parent="Players" unique_id=2095513998]
-zoom = Vector2(2.5, 2.5)
-
 [node name="Node2D" parent="Players" unique_id=383703282 instance=ExtResource("3_71j4m")]
 position = Vector2(370, -143)
 
@@ -56,3 +55,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1223462192]
 position = Vector2(218.5, -0.5)
 shape = SubResource("RectangleShape2D_j58t4")
+
+[node name="HUD" parent="." unique_id=2140504953 instance=ExtResource("8_4mrxx")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2095513998 node_paths=PackedStringArray("player1", "player2")]
+zoom = Vector2(2.5, 2.5)
+script = ExtResource("9_7r4gi")
+player1 = NodePath("../Players/Player")
+player2 = NodePath("../Players/Player2")

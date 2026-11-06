@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y6haohrnsgj3" path="res://scripts/player.gd" id="1_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://cetlgflw36r4w" path="res://Sprites/Crouch/crouch.png" id="2_dw050"]
-[ext_resource type="Resource" uid="uid://cg0ivbrue43pt" path="res://Attacks/light_punch.tres" id="2_pf23h"]
+[ext_resource type="Resource" uid="uid://vp0nqnot4g1w" path="res://Attacks/light_punch.tres" id="2_pf23h"]
 [ext_resource type="Texture2D" uid="uid://ck7uqefc01vea" path="res://Sprites/Idle/idle.png" id="3_b26j0"]
 [ext_resource type="Resource" uid="uid://c2wlrxvqx4mg" path="res://Attacks/medium_punch.tres" id="3_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://duxdt7uuq1mm5" path="res://Sprites/Jump/jump.png" id="4_n7ghd"]
@@ -678,7 +678,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0juu"]
 resource_local_to_scene = true
 radius = 14.0
-height = 95.0
+height = 70.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jxqw"]
 resource_local_to_scene = true
@@ -690,7 +690,6 @@ size = Vector2(19, 9)
 
 [node name="Player" type="CharacterBody2D" unique_id=131070923]
 collision_layer = 2
-collision_mask = 3
 floor_stop_on_slope = false
 script = ExtResource("1_1jxqw")
 light_punch_atk = ExtResource("2_pf23h")
@@ -704,7 +703,7 @@ animation = &"light_kick"
 offset = Vector2(0, -49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=381380714]
-position = Vector2(-2, 0.5)
+position = Vector2(-2, 13)
 shape = SubResource("CapsuleShape2D_k0juu")
 
 [node name="StateMachine" type="Node" parent="." unique_id=731662756 node_paths=PackedStringArray("player", "anim")]

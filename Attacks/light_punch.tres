@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://cg0ivbrue43pt"]
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://vp0nqnot4g1w"]
 
-[ext_resource type="Script" uid="uid://0k0fdygxww4s" path="res://Attacks/AttackData.gd" id="1_vtkvg"]
+[ext_resource type="Script" uid="uid://0k0fdygxww4s" path="res://Attacks/AttackData.gd" id="1_td6iy"]
 
 [resource]
-script = ExtResource("1_vtkvg")
+script = ExtResource("1_td6iy")
 anim_name = "light_punch"
 damage = 3
 startup_frames = 3

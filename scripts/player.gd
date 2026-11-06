@@ -2,6 +2,11 @@ extends CharacterBody2D
 class_name Player
 
 signal take_damage(event: String)
+signal health_changed(new_health: int, max_health: int)
+signal died
+
+@export var max_health: int = 100
+var current_health: int = 100
 
 var received_hitstun: int = 0
 var received_damage: int = 0
@@ -18,7 +23,6 @@ var is_facing_right: bool = true
 @export var medium_punch_atk: AttackData
 @export var light_kick_atk: AttackData
 @export var heavy_punch_atk: AttackData
-
 @export var medium_kick_atk: AttackData
 @export var heavy_kick_atk: AttackData
 
@@ -38,10 +42,11 @@ var tap_timer: int = 0
 const TAP_WINDOW: int = 14
 
 func _ready() -> void:
+	current_health = max_health
 	$Hitbox.area_entered.connect(_on_hitbox_area_entered)
-	floor_max_angle = 0.0
-	floor_snap_length = 0.0
-	
+	floor_snap_length = 8.0
+	floor_stop_on_slope = true
+
 func _physics_process(_delta: float) -> void:
 	handle_pushbox_separation()
 	
@@ -77,7 +82,7 @@ func handle_pushbox_separation() -> void:
 		elif is_on_floor() and not enemy.is_on_floor():
 			force_share = 0.0
 		
-		var push_vector = Vector2(push_dir * overlap * force_share * 0.8, 0.0)
+		var push_vector = Vector2(push_dir * overlap * force_share * 0.4, 0.0)
 		move_and_collide(push_vector)
 
 func set_hitbox_active(is_active: bool) -> void:
@@ -142,6 +147,13 @@ func receive_hit(atk: AttackData, attacker_pos_x: float) -> void:
 	received_hitstun = atk.hitstun_frames
 	velocity.x = push_dir * atk.knockback.x
 	velocity.y = atk.knockback.y
+	
+	current_health = max(0, current_health - received_damage)
+	health_changed.emit(current_health, max_health)
+	
+	if current_health <= 0:
+		died.emit()
+	
 	state_machine.send_event("HURT")
 	take_damage.emit("HURT")
 
@@ -155,20 +167,16 @@ func set_crouch_boxes(crouching: bool) -> void:
 		hurtbox_col.position = Vector2(-1.75, 20.0)
 		hurtbox_col.shape.size = Vector2(34.5, 58.0)
 		
-		body_col.position = Vector2(-2.0, 20.0)
+		body_col.position = Vector2(-2.0, 24.0)
 		if body_col.shape is CapsuleShape2D:
-			body_col.shape.height = 60.0
-		elif body_col.shape is RectangleShape2D:
-			body_col.shape.size = Vector2(28.0, 60.0)
+			body_col.shape.height = 48.0
 	else:
 		hurtbox_col.position = Vector2(-1.75, 0.25)
 		hurtbox_col.shape.size = Vector2(34.5, 97.5)
 		
-		body_col.position = Vector2(-2.0, 0.5)
+		body_col.position = Vector2(-2.0, 13.0)
 		if body_col.shape is CapsuleShape2D:
-			body_col.shape.height = 95.0
-		elif body_col.shape is RectangleShape2D:
-			body_col.shape.size = Vector2(28.0, 99.0)
+			body_col.shape.height = 70.0
 			
 func check_attack_inputs() -> bool:
 	var prefix = input_prefix
@@ -215,3 +223,10 @@ func check_dash_inputs() -> bool:
 			tap_timer = TAP_WINDOW
 			
 	return false
+	
+func freeze_player() -> void:
+	velocity = Vector2.ZERO
+	set_hitbox_active(false)
+	set_physics_process(false)
+	if state_machine:
+		state_machine.set_physics_process(false)
